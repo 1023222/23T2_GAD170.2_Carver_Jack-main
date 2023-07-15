@@ -5,9 +5,9 @@ using UnityEngine;
 public class Crew : MonoBehaviour
 {
 
-    [SerializeField] private string name;
+    [SerializeField] public string name;
     [SerializeField] private bool isAlien;
-    [SerializeField] private string hobby;
+    [SerializeField] public string hobby;
 
     private System.Random rnd = new System.Random();
 

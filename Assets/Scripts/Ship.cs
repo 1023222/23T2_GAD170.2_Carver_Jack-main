@@ -18,7 +18,7 @@ public class Ship : MonoBehaviour
     public void InstantiateApplicant()
     {
         Instantiate(Applicant);
-        
+
     }
 
     //This method adds the current applicant to the acceptedApplicants (crew) list and instantiates a new applicant for review.
@@ -29,4 +29,10 @@ public class Ship : MonoBehaviour
         //acceptedApplicants.Add(Applicant);
         successfulApplicants.Add(applicant);
     }
-}
+
+    public void DebugCrewLog()
+    {
+        Debug.Log(successfulApplicants[0]);
+    }
+
+}  
