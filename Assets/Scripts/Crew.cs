@@ -5,6 +5,8 @@ using UnityEngine;
 public class Crew : MonoBehaviour
 {
 
+
+
     [SerializeField] public string name;
     [SerializeField] private bool isAlien;
     [SerializeField] public string hobby;
@@ -23,6 +25,8 @@ public class Crew : MonoBehaviour
     void Start()
 {
         GenerateInfo();
+        //Trying to just name it from here rather than Ship.cs
+        //Object.name = name;
 }
 
     // This will Generate a random value for the variables 'name, isAlien and hobby'
@@ -44,11 +48,12 @@ public class Crew : MonoBehaviour
     void GenerateName()
     {
         name = names[rnd.Next(0, 14)];
+        print("NEW NAME = " + name);
     }
 
     void GenerateIsAlien()
     {
-        isAlien = Random.value < 0.10f;
+        isAlien = Random.value < 0.15f;
     }
 
     void GenerateAlienHobby()
