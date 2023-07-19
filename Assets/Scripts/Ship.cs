@@ -18,11 +18,31 @@ public class Ship : MonoBehaviour
 
     private string accessedCrewName;
 
+    [SerializeField] private int hires;
+    [SerializeField] private bool fullCrew;
+
     private void Start()
+    {
+        hires = 0;
+        fullCrew = false;
+    }
+
+    private void Update()
     {
         //crewScript = ApplicantPrefab.GetComponent<Crew>();
         //string accessedCrewName = crewScript.name;
         //string accessedCrewHobby = crewScript.hobby;
+
+        //For some reason this code runs the method even when the list is empty.
+        //if (successfulApplicants.Count == 9) ;
+        //{
+        //    FullCrew();
+        //}
+
+        if (hires == 10 && fullCrew == false)
+        {
+            FullCrew();
+        }
     }
 
 
@@ -39,7 +59,7 @@ public class Ship : MonoBehaviour
         string accessedCrewHobby = mostRecentApplicant.hobby;
         mostRecentApplicant.name = accessedCrewName;
         //print("NEW" + mostRecentApplicant.name);
-        //textManagerAccess.UpdateCurrentApplicant();
+        textManagerAccess.UpdateCurrentApplicant();
     }
 
     //This method adds the current applicant to the acceptedApplicants (crew) list and instantiates a new applicant for review.
@@ -48,11 +68,21 @@ public class Ship : MonoBehaviour
         //GameObject m = GameObject.Find("Applicant(Clone)");
         // finding the instantiated gameobject and adding it to the list/array
         successfulApplicants.Add(mostRecentApplicant.gameObject);
+
+        //increase hires variable by 1
+        hires++;
     }
 
     public void DebugCrewLog()
     {
         Debug.Log(successfulApplicants[0]);
+    }
+
+    private void FullCrew()
+    {
+        fullCrew = true;
+        Debug.Log("Your crew is full. ");
+
     }
 
 }  
