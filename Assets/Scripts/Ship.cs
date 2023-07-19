@@ -14,6 +14,7 @@ public class Ship : MonoBehaviour
     public GameObject ApplicantPrefab;
     //private Crew crewScript;
     public Crew mostRecentApplicant;
+    public Crew crewBool;
     public TextManager textManagerAccess;
 
     private string accessedCrewName;
@@ -69,19 +70,35 @@ public class Ship : MonoBehaviour
         // finding the instantiated gameobject and adding it to the list/array
         successfulApplicants.Add(mostRecentApplicant.gameObject);
 
-        //increase hires variable by 1
+        //increase hires variable by 1. When this is 10 it runs the endgame method.
         hires++;
     }
 
-    public void DebugCrewLog()
-    {
-        Debug.Log(successfulApplicants[0]);
-    }
 
     private void FullCrew()
     {
         fullCrew = true;
         Debug.Log("Your crew is full. ");
+
+        // Using a for loop to check for the isAlien variable (bool).
+        for (int i = 0; i < successfulApplicants.Count; i++) //The loop initialises a new variable 'i', and sets to 0. It will repeat the loop as long as i is less than the list count.
+        {
+            Crew crewBool = successfulApplicants[i].GetComponent<Crew>();
+
+            //if (successfulApplicants[i].isAlien == true)
+            //{
+            //    Debug.Log(i + " is an Alien!");
+            //}
+            if(crewBool != null && crewBool.isAlien == true)
+            {
+                Debug.Log(i+1 + " was an Alien!");
+            }
+
+            if (crewBool != null && crewBool.isAlien == false)
+            {
+                Debug.Log("You set off into the cosmos.");
+            }
+        }
 
     }
 

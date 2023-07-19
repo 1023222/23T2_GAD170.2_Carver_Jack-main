@@ -8,7 +8,7 @@ public class Crew : MonoBehaviour
 
 
     [SerializeField] public string name;
-    [SerializeField] private bool isAlien;
+    [SerializeField] public bool isAlien;
     [SerializeField] public string hobby;
 
     private System.Random rnd = new System.Random();
@@ -53,7 +53,7 @@ public class Crew : MonoBehaviour
 
     void GenerateIsAlien()
     {
-        isAlien = Random.value < 0.15f;
+        isAlien = Random.value < 0.50f;
     }
 
     void GenerateAlienHobby()
